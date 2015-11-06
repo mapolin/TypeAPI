@@ -5,6 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Helper = (function () {
     function Helper() {
+        return this;
     }
     Helper.prototype.guid = function () {
         function s4() {
@@ -22,21 +23,20 @@ var Helper = (function () {
         return element;
     };
     Helper.prototype.getData = function (element, data) {
-        if (typeof element == 'string') {
-            element = document.querySelector(element);
-        }
+        element = this.getElem(element);
         return element.getAttribute(data.name);
     };
     Helper.prototype.removeData = function (element, data) {
-        if (typeof element == 'string') {
-            element = document.querySelector(element);
-        }
+        element = this.getElem(element);
         var _data = this.getData(element, data);
         element.removeAttribute(data.name);
         return _data;
     };
     Helper.prototype.makefn = function (method) {
         return (typeof method == 'function') ? method : function () { };
+    };
+    Helper.prototype.getElem = function (selector) {
+        return (typeof selector == 'string') ? document.querySelectorAll(selector) : selector;
     };
     return Helper;
 })();

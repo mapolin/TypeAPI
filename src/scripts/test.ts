@@ -1,7 +1,11 @@
 import network = require('scripts/ajax');
 import dom = require('scripts/element');
+import validations = require('scripts/validation');
 
 (function() {
-    window.ajaxtest = new network.Ajax();
-    window.elementtest = new dom.Element();
+    window.CORE = {
+        network: network,
+        dom: dom,
+        validations: validations
+    };
 })();

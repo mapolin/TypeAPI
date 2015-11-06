@@ -4,7 +4,9 @@ export interface DOM_DATA {
 }
 
 export class Helper {
-    constructor() {}
+    constructor() {
+        return this;
+    }
 
     public guid() {
         function s4() {
@@ -27,17 +29,13 @@ export class Helper {
     }
 
     public getData(element: any, data: DOM_DATA) {
-        if (typeof element == 'string') {
-            element = document.querySelector(element);
-        }
+        element = this.getElem(element);
 
         return element.getAttribute(data.name);
     }
 
     public removeData(element: any, data: DOM_DATA) {
-        if (typeof element == 'string') {
-            element = document.querySelector(element);
-        }
+        element = this.getElem(element);
 
         var _data = this.getData(element, data);
         element.removeAttribute(data.name)
@@ -47,6 +45,10 @@ export class Helper {
 
     public makefn(method: any) {
         return (typeof method == 'function') ? method : function(){};
+    }
+
+    public getElem(selector: any) {
+        return (typeof selector == 'string') ? document.querySelectorAll(selector) : selector;
     }
 }
 
