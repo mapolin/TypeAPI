@@ -1,0 +1,18 @@
+<html>
+<head>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="scripts/jq.js"></script>
+    <script>
+            System.config({
+                packages: {'scripts': {defaultExtension: 'js'}}
+            });
+            System.import('scripts/core');
+            System.import('scripts/ajax');
+            System.import('scripts/element');
+            System.import('scripts/test');
+        </script>
+</head>
+<body>
+    <section id="test"></section>
+</body>
+</html>
